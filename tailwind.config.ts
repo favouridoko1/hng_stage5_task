@@ -21,6 +21,7 @@ const config: Config = {
         green: "#17AF26",
         black: "#1A1E26",
         purple: "#633CFF",
+        lightpurple: "#EFEBFF",
         red: "#DC2626",
         purplehover: "#BEADFF",
         topSelling: "#060709",
