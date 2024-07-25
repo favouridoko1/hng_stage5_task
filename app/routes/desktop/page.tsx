@@ -8,7 +8,7 @@ const Desktop = () => {
     <div>
       <Navbar />
       <br />
-      <div className="flex gap-3 justify-center">
+      <div className="flex gap-3 justify-center relative mb-10">
         <div className="bg-white w-2/6">
           <Image src={icom} alt="" />
         </div>
@@ -38,6 +38,10 @@ const Desktop = () => {
           </div>
           <br />
           <hr className="hr" />
+          <br />
+          <button className="bg-purplehover rounded max-w-24 py-2 px-4 text-purple hover:bg-lightpurple absolute  right-12 bottom-3">
+            save
+          </button>
           <br />
         </div>
       </div>
