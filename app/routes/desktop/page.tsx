@@ -1,6 +1,7 @@
 import Navbar from "@/component/Navbar";
 import Image from "next/image";
-import icom from "@/public/ph_envelope-simple-fill.png";
+import device_frame from "@/public/device_frame.png";
+import frame_container from "@/public/device_frame_rectangle.png";
 import hand_icon from "@/public/hand_icon.png";
 
 const Desktop = () => {
@@ -8,11 +9,16 @@ const Desktop = () => {
     <div>
       <Navbar />
       <br />
-      <div className="flex gap-3 justify-center relative mb-10">
-        <div className="bg-white w-2/6">
-          <Image src={icom} alt="" />
+      <div className="flex gap-3 justify-center mb-10 rounded text-black">
+        <div className="bg-white w-2/6 relative items-center flex justify-center">
+          <div className="rounded-full bg-lightgray  z-10">
+            {/* <Image /> */}
+          </div>
+            <Image src={device_frame} alt="" className="absolute" />
+            <Image src={frame_container} alt="" className="absolute" />
         </div>
-        <div className="bg-white w-3/5 rounded p-4 flex flex-col">
+
+        <div className="bg-white w-3/5 rounded p-4 flex flex-col relative">
           <h2 className="font-bold text-3xl text-darkgray">
             Customize your links
           </h2>
@@ -39,7 +45,7 @@ const Desktop = () => {
           <br />
           <hr className="hr" />
           <br />
-          <button className="bg-purplehover rounded max-w-24 py-2 px-4 text-purple hover:bg-lightpurple absolute  right-12 bottom-3">
+          <button className="bg-purplehover rounded max-w-24 py-2 px-4 text-purple hover:bg-lightpurple absolute  right-6 bottom-2">
             save
           </button>
           <br />
