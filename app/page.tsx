@@ -11,7 +11,8 @@ import { useRouter } from "next/navigation";
 const Desktop = () => {
   const [user] = useAuthState(auth);
   const router = useRouter();
-  if(!user) {
+  const userSession = sessionStorage.getItem('user')
+  if(!user || !userSession) {
     router.push("routes/signup")
   }
   return (
