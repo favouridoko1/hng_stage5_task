@@ -1,112 +1,69 @@
-"use client";
-import { useRouter } from "next/navigation";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { auth } from "@/app/firebase/config";
-import { useState } from "react";
-
-import brand_icon from "@/public/solar_link-circle-bold.png";
-import envelop_icon from "@/public/ph_envelope-simple-fill.png";
-import key_icon from "@/public/ph_lock-key-fill.png";
+"use client"
+import Navbar from "@/component/Navbar";
 import Image from "next/image";
+import device_frame from "@/public/device_frame.png";
+import frame_container from "@/public/device_frame_rectangle.png";
+import hand_icon from "@/public/hand_icon.png";
+import {useAuthState} from "react-firebase-hooks/auth";
+import {auth} from '@/app/firebase/config'
+import { useRouter } from "next/navigation";
 
-const Page = () => {
+const Desktop = () => {
+  const [user] = useAuthState(auth);
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
-  const navigate = (page: string) => {
-    router.push(page);
-  };
-
-  const handleSignIn = async (e) => {
-    e.preventDefault();
-    if (email === "" || password == "") {
-      alert("Please fill out all fields correctly");
-    } else
-      try {
-        const res = await signInWithEmailAndPassword(email, password);
-        console.log(res);
-        setEmail("");
-        setPassword("");
-        navigate("routes/desktop");
-      } catch (error) {
-        console.log(error);
-      }
-  };
+  if(!user) {
+    router.push("routes/signup")
+  }
   return (
     <>
-      <div className="flex items-center justify-center flex-col text-gray loginContainer">
-        <figure className="flex gap-2 devlinkandbrand_icon">
-          <Image src={brand_icon} alt="" />
-          <figcaption className="font-bold text-4xl text-darkgray">
-            devlink
-          </figcaption>
-        </figure>
-        <br />
-        <form className="text-nowrap bg-white p-8 rounded-2xl flex flex-col justify-center">
-          <h2 className="font-bold text-3xl text-darkgray">Login</h2>
-          <p>Add your details below to get back into the app</p>
+      <Navbar />
+    <div>
+      {/* <br /> */}
+      <div className="flex gap-3 justify-center mb-10 rounded text-black">
+        <div className="bg-white w-2/6 relative items-center flex justify-center">
+          <div className="rounded-full bg-lightgray  z-10">
+            {/* <Image /> */}
+          </div>
+            <Image src={device_frame} alt="" className="absolute" />
+            <Image src={frame_container} alt="" className="absolute" />
+        </div>
 
+        <div className="bg-white w-3/5 rounded p-4 flex flex-col relative">
+          <h2 className="font-bold text-3xl text-darkgray">
+            Customize your links
+          </h2>
+          <p>
+            add/edit/remove links below and share all your profiles with the
+            world!
+          </p>
           <br />
-          <li className="list-none relative loginInpuContainer">
-            <label htmlFor="loginEmailInput">Email adress</label>
-            <br />
-            <input
-              type="email"
-              placeholder="eg. alex@email.com"
-              id="loginEmailInput"
-              className="px-12 outline-none py-3 border pl-16 border-border max-w-md"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <Image
-              src={envelop_icon}
-              alt="envelop icon"
-              className="absolute bottom-4 left-8"
-            />
-          </li>
-          <br />
-          <li className="list-none relative loginInpuContainer">
-            <label htmlFor="loginPassInput">Password</label>
-            <br />
-
-            <input
-              type="password"
-              placeholder="Enter your password"
-              id="loginPassInput"
-              className="px-12 outline-none py-3 border pl-16 border-border max-w-md"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <Image
-              src={key_icon}
-              alt="envelop icon"
-              className="absolute bottom-4 left-8"
-            />
-          </li>
-          <br />
-          <button
-            type="submit"
-            className="loginButton text-white py-3"
-            onClick={handleSignIn}
-          >
-            Login
+          <button className="border border-purple rounded-2xl py-2 px-4 text-purple hover:bg-lightpurple">
+            + Add new link
           </button>
           <br />
-          <div className="flex items-center bottom-login">
-          <p className="ml-8 mr-1">
-            Don't have an account?{" "}
-          </p>
-            <p
-              className="text-purple cursor-pointer hover:text-purplehover"
-              onClick={() => navigate("routes/signup")}
-            >
-              Create account
+          <div className="bg-lightgray rounded py-16 flex justify-center flex-col items-center ">
+            <Image src={hand_icon} alt="" />
+            <h2 className="font-bold text-3xl text-darkgray">
+              Let's get you started
+            </h2>
+            <p className="addlinkdescription">
+              Use the "Add link" button to get started. Ones you have more than
+              one link. You can reorder and edit them. We're here to help you
+              share your profiles with everyone!
             </p>
-
           </div>
-        </form>
+          <br />
+          <hr className="hr" />
+          <br />
+          <button className="bg-purplehover rounded max-w-24 py-2 px-4 text-purple hover:bg-lightpurple absolute  right-6 bottom-2">
+            save
+          </button>
+          <br />
+        </div>
       </div>
+    </div>
     </>
   );
 };
 
-export default Page;
+export default Desktop;
