@@ -110,7 +110,7 @@ const CreateAccount = () => {
             Already have an account?{" "}
             <span
               className="text-purple cursor-pointer hover:text-purplehover"
-              onClick={() => navigate("login")}
+              onClick={() => navigate("/")}
             >
               Login
             </span>
