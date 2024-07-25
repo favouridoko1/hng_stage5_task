@@ -1,22 +1,34 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { auth } from "@/app/firebase/config";
 import brand_icon from "@/public/solar_link-circle-bold.png";
 import envelop_icon from "@/public/ph_envelope-simple-fill.png";
 import key_icon from "@/public/ph_lock-key-fill.png";
 import Image from "next/image";
-import { FormEvent } from "react";
 
 const CreateAccount = () => {
   const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [ createUserWithEmailAndPassword ] = useCreateUserWithEmailAndPassword(auth)
 
-  const navigate=(page:string)=>{
-    router.push(page)
-  } 
-
-  const handleSubmit = (e:any) => {
-    e.preventDefault()
-    navigate("desktop");
+  const navigate = (page: string) => {
+    router.push(page);
   };
+
+  const handleSignup = async ()=>{
+    try {
+      const res = await createUserWithEmailAndPassword(email, password);
+      console.log(res)
+      setEmail("");
+      setPassword("");
+      console.log("user Successfully created")
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <>
       <div className="flex items-center justify-center flex-col text-gray loginContainer">
@@ -33,12 +45,13 @@ const CreateAccount = () => {
 
           <br />
           <li className="list-none relative loginInpuContainer">
-            <label htmlFor="Name">Email adress</label>
+            <label htmlFor="loginEmailInput">Email adress</label>
             <br />
             <input
               type="email"
               placeholder="eg. alex@email.com"
-              id="loginInput"
+              id="loginEmailInput"
+              onChange={(e) => setEmail(e.target.value)}
               className="px-12 outline-none py-3 border pl-16 border-border max-w-md"
             />
             <Image
@@ -49,13 +62,14 @@ const CreateAccount = () => {
           </li>
           <br />
           <li className="list-none relative loginInpuContainer">
-            <label htmlFor="Name">Password</label>
+            <label htmlFor="loginPassInput">Password</label>
             <br />
             <input
               type="password"
               placeholder="At least 8 character"
-              id="loginInput"
+              id="loginPassInput"
               className="px-12 outline-none py-3 border pl-16 border-border max-w-md"
+              onChange={(e)=> setPassword(e.target.value)}
             />
             <Image
               src={key_icon}
@@ -64,7 +78,7 @@ const CreateAccount = () => {
             />
           </li>
           <br />
-          <li className="list-none relative loginInpuContainer">
+          {/* <li className="list-none relative loginInpuContainer">
             <label htmlFor="Name">confirm password</label>
             <br />
             <input
@@ -79,13 +93,13 @@ const CreateAccount = () => {
               className="absolute bottom-4 left-8"
             />
           </li>
-          <br />
+          <br /> */}
           <p> Password must contain at least 8 characters</p>
           <br />
           <button
             type="submit"
             className="loginButton text-white py-3"
-            onClick={handleSubmit}
+            onClick={handleSignup}
           >
             Create new account
           </button>
