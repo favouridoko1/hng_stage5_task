@@ -6,9 +6,10 @@ import hand_icon from "@/public/hand_icon.png";
 
 const Desktop = () => {
   return (
-    <div>
+    <>
       <Navbar />
-      <br />
+    <div>
+      {/* <br /> */}
       <div className="flex gap-3 justify-center mb-10 rounded text-black">
         <div className="bg-white w-2/6 relative items-center flex justify-center">
           <div className="rounded-full bg-lightgray  z-10">
@@ -52,6 +53,7 @@ const Desktop = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

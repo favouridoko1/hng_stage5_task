@@ -13,7 +13,7 @@ body {
 }
 
 .loginInpuContainer {
-  width: 400px;
+  max-width: 400px;
 }
 
 #loginInput,
@@ -23,7 +23,9 @@ body {
   border-radius: 8px;
 }
 
-#loginInput:focus {
+#loginInput:focus, 
+#loginPassInput:focus,
+#loginEmailInput:focus {
   box-shadow: 0px 0px 32px 0px rgba(99, 60, 255, 0.25);
 }
 
@@ -48,7 +50,31 @@ hr {
 
 
 
+@media screen and (max-width: 720px){
+  body {
+    background: #ffffff;
+  }
 
+  form {
+    max-width: 400px;
+  }
+  .devlinkandbrand_icon {
+    margin-top: 2%;
+    margin-left: 5%;
+  }
+
+  .loginContainer {
+    justify-content: start;
+    align-items: start;
+    margin-top: 8%;
+    margin-bottom: 5%;
+    max-width: 350px;
+  }
+  
+.bottom-login {
+  flex-direction: column;
+}
+}
 
 
 

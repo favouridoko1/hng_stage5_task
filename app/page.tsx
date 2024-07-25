@@ -28,7 +28,7 @@ const Page = () => {
         console.log(res);
         setEmail("");
         setPassword("");
-        navigate("desktop");
+        navigate("routes/desktop");
       } catch (error) {
         console.log(error);
       }
@@ -36,7 +36,7 @@ const Page = () => {
   return (
     <>
       <div className="flex items-center justify-center flex-col text-gray loginContainer">
-        <figure className="flex gap-2">
+        <figure className="flex gap-2 devlinkandbrand_icon">
           <Image src={brand_icon} alt="" />
           <figcaption className="font-bold text-4xl text-darkgray">
             devlink
@@ -68,6 +68,7 @@ const Page = () => {
           <li className="list-none relative loginInpuContainer">
             <label htmlFor="loginPassInput">Password</label>
             <br />
+
             <input
               type="password"
               placeholder="Enter your password"
@@ -90,15 +91,18 @@ const Page = () => {
             Login
           </button>
           <br />
-          <p className="mx-12">
+          <div className="flex items-center bottom-login">
+          <p className="ml-8 mr-1">
             Don't have an account?{" "}
-            <span
+          </p>
+            <p
               className="text-purple cursor-pointer hover:text-purplehover"
-              onClick={() => navigate("signup")}
+              onClick={() => navigate("routes/signup")}
             >
               Create account
-            </span>
-          </p>
+            </p>
+
+          </div>
         </form>
       </div>
     </>
