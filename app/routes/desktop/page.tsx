@@ -25,17 +25,20 @@ const Desktop = () => {
             + Add new link
           </button>
           <br />
-          <div className="bg-lightgray rounded flex justify-center flex-col items-center py-3">
+          <div className="bg-lightgray rounded py-16 flex justify-center flex-col items-center ">
             <Image src={hand_icon} alt="" />
             <h2 className="font-bold text-3xl text-darkgray">
               Let's get you started
             </h2>
-            <p className="max-w-96">
-              Use the "Add link button to get started. Ones you have more than
+            <p className="addlinkdescription">
+              Use the "Add link" button to get started. Ones you have more than
               one link. You can reorder and edit them. We're here to help you
               share your profiles with everyone!
             </p>
           </div>
+          <br />
+          <hr className="hr" />
+          <br />
         </div>
       </div>
     </div>
