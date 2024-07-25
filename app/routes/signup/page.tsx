@@ -18,12 +18,14 @@ const CreateAccount = () => {
     router.push(page);
   };
 
-  const handleSignup = async ()=>{
+  const handleSignup = async (e)=>{
+    e.preventDefault();
     try {
       const res = await createUserWithEmailAndPassword(email, password);
       console.log(res)
       setEmail("");
       setPassword("");
+      navigate("desktop")
       console.log("user Successfully created")
     } catch (error) {
       console.log(error)

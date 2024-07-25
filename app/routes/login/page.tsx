@@ -18,7 +18,8 @@ const Login = () => {
       router.push(page);
   }
 
-  const handleSignIn =async()=>{
+  const handleSignIn =async(e)=>{
+    e.preventDefault()
     try {
       const res = await signInWithEmailAndPassword(email, password);
       console.log(res);
