@@ -35,9 +35,9 @@ const SignUp = () => {
   return (
     <>
       <div className="flex items-center justify-center flex-col text-gray loginContainer">
-        <figure className="flex gap-2">
+        <figure className="flex gap-2 devlinkandbrand_icon">
           <Image src={brand_icon} alt="" />
-          <figcaption className="font-bold text-4xl text-darkgray">
+          <figcaption className="font-bold text-4xl text-darkgray ">
             devlink
           </figcaption>
         </figure>
@@ -107,15 +107,17 @@ const SignUp = () => {
             Create new account
           </button>
           <br />
-          <p className="mx-12">
-            Already have an account?{" "}
-            <span
+          <div className="flex items-center bottom-login">
+          <p className="ml-8 mr-1">
+            Create new account{" "}
+          </p>
+            <p
               className="text-purple cursor-pointer hover:text-purplehover"
               onClick={() => navigate("login")}
             >
-              Login
-            </span>
-          </p>
+              Already have an account?{" "}
+            </p>
+          </div>
         </form>
       </div>
     </>

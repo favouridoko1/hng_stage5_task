@@ -101,7 +101,6 @@ const Page = () => {
             >
               Create account
             </p>
-
           </div>
         </form>
       </div>

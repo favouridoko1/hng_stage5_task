@@ -18,7 +18,6 @@ const Navbar = () => {
               </figure>
             </li>
           </ul>
-
           <ul className="flex gap-2 text-bold text-purple items-center">
             <figure className="flex gap-2 bg-lightpurple py-2 px-4 rounded">
               <span>
